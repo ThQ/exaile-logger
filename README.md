@@ -24,7 +24,7 @@ history. Like plotting with R, or reporting with Python, or whatever.
 
 # Installation
 
- * Run `cd /path/to/logger && make ezx`
+ * Run `cd /path/to/logger && make exz`
  * Open Exaile
  * Go to *Edit* > *Preferences* > *Plugins*
  * Click *Install plugin*
