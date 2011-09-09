@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<interface>
+	<requires lib="gtk+" version="2.16"/>
+	<object class="GtkWindow" id="cd_prefs_window">
+		<child>
+			<object class="GtkHBox" id="preferences_pane">
+				<property name="visible">True</property>
+				<property name="orientation">vertical</property>
+				<child>
+					<object class="GtkLabel" id="label1">
+						<property name="visible">True</property>
+						<property name="label" translatable="yes">Log file path: </property>
+					</object>
+					<packing>
+						<property name="expand">False</property>
+						<property name="position">0</property>
+					</packing>
+				</child>
+			</object>
+		</child>
+	</object>
+</interface>

@@ -1,0 +1,3 @@
+*.py
+build
+user_log.sqlite

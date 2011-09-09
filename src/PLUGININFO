@@ -1,0 +1,4 @@
+Version='0.0.1'
+Authors=['Thomas Quemard <thomas.quemard@gmail.com>']
+Name='logger'
+Description='Logs everything that you listen.'
