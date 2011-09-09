@@ -10,15 +10,12 @@
 # or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
 # License for more details.
 
-import csv
-import logging
 import os.path
-import sqlite3
+import time
 import xl.event
 
-import logger
+import plugin
 import loggerprefs
-
 
 LOGGER_PLUGIN = None
 
@@ -38,14 +35,17 @@ def get_preferences_pane():
 
 def _enable(eventname, exaile, nothing):
     global LOGGER_PLUGIN
-    store_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), \
-        "user_log.sqlite")
-    LOGGER_PLUGIN = Plugin(store_path)
+    store_path = "/home/thomas/exaile_log.sqlite"
+    LOGGER_PLUGIN = plugin.Plugin(store_path)
 
-    xl.event.add_callback(on_track_start, "playback_track_start")
-    xl.event.add_callback(on_track_end, "playback_track_end")
-    xl.event.add_callback(on_track_pause, "playback_player_pause")
-    xl.event.add_callback(on_track_resume, "playback_player_resume")
+    if LOGGER_PLUGIN.panic:
+        plugin.LOG.error("Panic mode. Disabling.")
+        disable(exaile)
+    else:
+        xl.event.add_callback(on_track_start, "playback_track_start")
+        xl.event.add_callback(on_track_end, "playback_track_end")
+        xl.event.add_callback(on_track_pause, "playback_player_pause")
+        xl.event.add_callback(on_track_resume, "playback_player_resume")
 
 def on_track_start (event_name, exaile, data):
     print "TRACK_START"
